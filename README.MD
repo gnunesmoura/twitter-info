@@ -6,8 +6,17 @@ Pré-requisitos:
 1. [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/);
 2. [docker-compose](https://docs.docker.com/compose/install/#install-compose).
 
-Para entender como funciona a configuração do app veja o arquivo 
-[env-config.js](https://github.com/gnunesmoura/central-controle/blob/master/src/env-config.js)
+Arquivo de configuração com credencial de acesso ao twitter deve ser adicionado a raiz do projeto
+para construir a imagem docker.
+```
+{
+  "twitter": {
+    "Authorization": "Bearer <Twitter Oauth2 token>"
+  }
+}
+```
+Para entender melhor como funciona a configuração do app veja o arquivo 
+[env-config.js](https://github.com/gnunesmoura/twitter-info/blob/master/src/env-config.js)
 
 ## Deploy local
 1. Faça o build da imagem
@@ -45,7 +54,7 @@ pipeline {
     stages {
         stage('Clone do repositório') {
             steps {
-                git 'https://github.com/gnunesmoura/central-controle.git'
+                git 'https://github.com/gnunesmoura/twitter-api.git'
             }
         }
         

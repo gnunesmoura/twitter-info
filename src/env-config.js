@@ -35,7 +35,6 @@ if (nconf.get('configPath')) {
 // 5º
 nconf.defaults({
   port: 4000,
-  tokenSecret: '123segredo123',
   database: {
     connectString: `mongodb://${isProduction ? 'mongo' : 'localhost'}:27017/twitter-info`,
   },
