@@ -39,6 +39,8 @@ nconf.defaults({
   database: {
     connectString: `mongodb://${isProduction ? 'mongo' : 'localhost'}:27017/twitter-info`,
   },
+  twitter: {
+    Authorization: 'Bearer <token>',
+  },
 });
-
 module.exports = nconf;

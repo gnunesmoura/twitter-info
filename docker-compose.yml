@@ -1,0 +1,22 @@
+---
+version: "3"
+services:
+  twitter-info:
+    container_name: twitter-info
+    build: .
+    ports:
+      - 4000:4000
+    networks:
+      - backend
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    networks:
+      - backend
+
+networks:
+  backend:
+
+volumes:
+  esdata1:

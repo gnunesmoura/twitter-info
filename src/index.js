@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const logger = require('./logger');
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 
+require('./tweets/index');
 const app = express();
 const { stream } = logger;
 
@@ -17,7 +17,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // Set global response headers
 app.use((req, res, next) => {

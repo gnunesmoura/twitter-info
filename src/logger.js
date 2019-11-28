@@ -7,7 +7,7 @@ const { createLogger, format, transports } = winston;
 const esTransportOpts = {
   level: 'info',
   clientOpts: {
-    node: 'http://elasticsearch:9200',
+    node: 'http://127.0.0.1:9200',
     auth: {
       username: 'elastic',
       password: 'asdf1234',
@@ -20,18 +20,7 @@ const esTransportOpts = {
 
 const logger = createLogger({
   level: 'info',
-  format: format.combine(
-    format.timestamp({
-      format: 'YYYY-MM-DD HH:mm:ss',
-    }),
-    format.errors({ stack: true }),
-    format.splat(),
-    format.json(),
-  ),
-  defaultMeta: { service: 'twitter-info' },
   transports: nconf.get('NODE_ENV') === 'production' ? [
-    new transports.File({ filename: './log/quick-start-error.log', level: 'error' }),
-    new transports.File({ filename: './log/quick-start-combined.log' }),
     new Elasticsearch(esTransportOpts),
   ] : [
     new transports.Console({

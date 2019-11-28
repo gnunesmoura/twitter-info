@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const nconf = require('nconf');
 const logger = require('./logger');
 
+mongoose.Promise = Promise;
+
 mongoose.connect(nconf.get('database:connectString'), {
   useNewUrlParser: true,
   useUnifiedTopology: true,
