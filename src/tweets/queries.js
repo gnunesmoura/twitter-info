@@ -22,8 +22,7 @@ const mostFollowedUsers = numberOfUsers => tweetsDao.find()
     .map(({ user }) => user)
     .reduce(uniqueUserReduceFn, [])
     .sort((a, b) => b.followers_count - a.followers_count)
-    .slice(0, numberOfUsers)
-  );
+    .slice(0, numberOfUsers));
 
 module.exports = {
   mostFollowedUsers,

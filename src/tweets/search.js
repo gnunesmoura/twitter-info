@@ -38,7 +38,7 @@ const searchParams = tag => ({
  */
 const haveExactTag = (tweet, tag) => {
   const { hashtags } = tweet.entities;
-  return hashtags.find(({ text }) => text === tag) ? true : false;
+  return !!hashtags.find(({ text }) => text === tag);
 };
 
 /**
